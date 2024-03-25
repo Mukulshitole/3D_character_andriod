@@ -57,7 +57,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
         {
             Vector3 aimdr = (mouseWorldPosition - spawnBulletProjectile.position).normalized;
             Instantiate(bfBulletProjectile, spawnBulletProjectile.position, Quaternion.LookRotation(aimdr,Vector3.up));
-            starterAssetsInputs.shoot = true;
+            starterAssetsInputs.shoot = false;    // if keep false to get cs effect and
         }
         
 
