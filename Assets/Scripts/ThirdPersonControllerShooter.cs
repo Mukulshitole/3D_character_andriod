@@ -12,6 +12,8 @@ public class ThirdPersonControllerShooter : MonoBehaviour
     [SerializeField] private float aimSensetivity;
     [SerializeField] private LayerMask aimcolliderLayerMask  = new LayerMask();
     [SerializeField] private Transform debugTransform;
+    [SerializeField] private Transform bfBulletProjectile;
+    [SerializeField] private Transform spawnBulletProjectile;
 
     private ThirdPersonController thirdPersonController;  // this things helps to call scripts
     private StarterAssetsInputs starterAssetsInputs;
@@ -43,6 +45,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+            
         }
         else
         {
@@ -50,7 +53,12 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             thirdPersonController.Setsensetivity(normalSensetivity);
             thirdPersonController.SetRotateonMove(true);
         }
-
+        if (starterAssetsInputs.shoot)
+        {
+            Vector3 aimdr = (mouseWorldPosition - spawnBulletProjectile.position).normalized;
+            Instantiate(bfBulletProjectile, spawnBulletProjectile.position, Quaternion.LookRotation(aimdr,Vector3.up));
+            starterAssetsInputs.shoot = true;
+        }
         
 
     }

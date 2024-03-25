@@ -33,7 +33,10 @@ namespace StarterAssets
             starterAssetsInputs.AimInput(virtualAimState);
         }
 
-       
+        public void VirtualShootInput(bool virtualShootState)
+        {
+            starterAssetsInputs.ShootInput(virtualShootState);
+        }
 
     }
 
