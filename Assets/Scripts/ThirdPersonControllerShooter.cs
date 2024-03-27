@@ -15,6 +15,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
     [SerializeField] private Transform bfBulletProjectile;
     [SerializeField] private Transform spawnBulletProjectile;
 
+
     private ThirdPersonController thirdPersonController;  // this things helps to call scripts
     private StarterAssetsInputs starterAssetsInputs;
 
@@ -28,10 +29,12 @@ public class ThirdPersonControllerShooter : MonoBehaviour
         Vector3 mouseWorldPosition = Vector3.zero;
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+        
         if(Physics.Raycast(ray,out RaycastHit raycastHit, 999f, aimcolliderLayerMask))
         {
             debugTransform.position = raycastHit.point;
-            mouseWorldPosition = raycastHit.point;        
+            mouseWorldPosition = raycastHit.point;
+            
         }
 
         if (starterAssetsInputs.Aim)
@@ -55,6 +58,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
         }
         if (starterAssetsInputs.shoot)
         {
+         
             Vector3 aimdr = (mouseWorldPosition - spawnBulletProjectile.position).normalized;
             Instantiate(bfBulletProjectile, spawnBulletProjectile.position, Quaternion.LookRotation(aimdr,Vector3.up));
             starterAssetsInputs.shoot = false;    // if keep false to get cs effect and
