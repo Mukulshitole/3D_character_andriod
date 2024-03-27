@@ -14,7 +14,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
     [SerializeField] private Transform debugTransform;
     [SerializeField] private Transform bfBulletProjectile;
     [SerializeField] private Transform spawnBulletProjectile;
-
+    private Animator animator;
 
     private ThirdPersonController thirdPersonController;  // this things helps to call scripts
     private StarterAssetsInputs starterAssetsInputs;
@@ -23,6 +23,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
     {
         thirdPersonController = GetComponent<ThirdPersonController>(); 
         starterAssetsInputs = GetComponent<StarterAssetsInputs>();
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -42,6 +43,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             aimVirtualCamera.gameObject.SetActive(true);
             thirdPersonController.Setsensetivity(aimSensetivity);
             thirdPersonController.SetRotateonMove(false);
+            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1),1f, Time.deltaTime*10f));
             
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
@@ -55,6 +57,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             aimVirtualCamera.gameObject.SetActive(false);
             thirdPersonController.Setsensetivity(normalSensetivity);
             thirdPersonController.SetRotateonMove(true);
+            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
         }
         if (starterAssetsInputs.shoot)
         {
