@@ -371,6 +371,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 593375204}
   - {fileID: 834897159}
   m_Father: {fileID: 210404658}
   m_RootOrder: 0
@@ -1516,6 +1517,37 @@ Transform:
   m_Father: {fileID: 1902574087}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &417451924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417451925}
+  m_Layer: 0
+  m_Name: rest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &417451925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417451924}
+  m_LocalRotation: {x: -0.24308576, y: 0.7934987, z: 0.40652433, w: -0.3821088}
+  m_LocalPosition: {x: 0.029, y: -0, z: 0.087}
+  m_LocalScale: {x: 0.0049999994, y: 0.005, z: 0.005}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 712692463}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -27.347, y: -115.148, z: -51.636}
 --- !u!1 &417930565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,9 +1932,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimVirtualCamera: {fileID: 1904542457}
-  gunposition1: {fileID: 1589870588}
-  gunposition2: {fileID: 1618329634}
-  gunpos: {fileID: 1589870588}
   normalSensetivity: 1
   aimSensetivity: 0.5
   aimcolliderLayerMask:
@@ -1912,6 +1941,9 @@ MonoBehaviour:
   bfBulletProjectile: {fileID: 4263705045442398023, guid: 4a664cc65eca2cd419289843df7bd14d,
     type: 3}
   spawnBulletProjectile: {fileID: 1079301353}
+  gunposition1: {fileID: 593375203}
+  gunposition2: {fileID: 417451924}
+  gunpos: {fileID: 1589870588}
 --- !u!114 &520118032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2366,6 +2398,37 @@ Transform:
   m_Father: {fileID: 1538363322}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &593375203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 593375204}
+  m_Layer: 0
+  m_Name: postion_aim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &593375204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593375203}
+  m_LocalRotation: {x: 0.6467794, y: 0.15796176, z: -0.34729847, w: 0.660385}
+  m_LocalPosition: {x: -0.044, y: -0.02, z: -0.072}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 114470350}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 74.572, y: 295.24298, z: 252.97699}
 --- !u!1 &594986699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,6 +2770,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1618329635}
+  - {fileID: 417451925}
   m_Father: {fileID: 556451814}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5133,7 +5197,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: a98b64b77969f1e4ca8f55ec97fb531e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: a98b64b77969f1e4ca8f55ec97fb531e, type: 3}
       propertyPath: m_Name
@@ -5276,12 +5340,6 @@ Transform:
   m_Father: {fileID: 1368469497}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1618329634 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: a98b64b77969f1e4ca8f55ec97fb531e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1598626481}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1618329635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: a98b64b77969f1e4ca8f55ec97fb531e,

@@ -16,6 +16,10 @@ public class ThirdPersonControllerShooter : MonoBehaviour
     [SerializeField] private Transform bfBulletProjectile;
     [SerializeField] private Transform spawnBulletProjectile;
     private Animator animator;
+    [SerializeField] private GameObject gunposition1;
+    [SerializeField] private GameObject gunposition2;
+    public GameObject gunpos;
+
 
     private ThirdPersonController thirdPersonController;  // this things helps to call scripts
     private StarterAssetsInputs starterAssetsInputs;
@@ -49,7 +53,8 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
-           
+            gunpos.transform.position = gunposition1.transform.position;
+
 
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
             
@@ -59,6 +64,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             aimVirtualCamera.gameObject.SetActive(false);
             thirdPersonController.Setsensetivity(normalSensetivity);
             thirdPersonController.SetRotateonMove(true);
+            gunpos.transform.position = gunposition2.transform.position;
             animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f)); // change in here
             
         }
@@ -69,8 +75,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             Instantiate(bfBulletProjectile, spawnBulletProjectile.position, Quaternion.LookRotation(aimdr,Vector3.up));
             starterAssetsInputs.shoot = false;    // if keep false to get cs effect and
         }
-        
-
+       
     }
 
 }
