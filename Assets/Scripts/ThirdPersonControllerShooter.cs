@@ -57,7 +57,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             aimVirtualCamera.gameObject.SetActive(false);
             thirdPersonController.Setsensetivity(normalSensetivity);
             thirdPersonController.SetRotateonMove(true);
-            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
+            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f)); // change in here
         }
         if (starterAssetsInputs.shoot)
         {
