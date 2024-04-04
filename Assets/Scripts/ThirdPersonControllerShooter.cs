@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class ThirdPersonControllerShooter : MonoBehaviour
 {
    [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
+  
     [SerializeField] private float normalSensetivity;  // different sensetivity for different components
     [SerializeField] private float aimSensetivity;
     [SerializeField] private LayerMask aimcolliderLayerMask  = new LayerMask();
@@ -48,6 +49,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
+           
 
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
             
@@ -58,6 +60,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             thirdPersonController.Setsensetivity(normalSensetivity);
             thirdPersonController.SetRotateonMove(true);
             animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f)); // change in here
+            
         }
         if (starterAssetsInputs.shoot)
         {
