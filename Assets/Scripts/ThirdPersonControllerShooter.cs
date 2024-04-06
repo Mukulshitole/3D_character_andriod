@@ -70,7 +70,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
         }
         if (starterAssetsInputs.shoot)
         {
-         animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
+            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
             Vector3 aimdr = (mouseWorldPosition - spawnBulletProjectile.position).normalized;
             Instantiate(bfBulletProjectile, spawnBulletProjectile.position, Quaternion.LookRotation(aimdr,Vector3.up));
             starterAssetsInputs.shoot = false;    // if keep false to get cs effect and
