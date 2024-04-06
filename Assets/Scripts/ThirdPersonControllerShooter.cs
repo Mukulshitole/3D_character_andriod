@@ -16,6 +16,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
     [SerializeField] private Transform bfBulletProjectile;
     [SerializeField] private Transform spawnBulletProjectile;
     private Animator animator;
+    private Animator animator2;
     [SerializeField] private GameObject gunposition1;
     [SerializeField] private GameObject gunposition2;
     public GameObject gunpos;
@@ -29,6 +30,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
         thirdPersonController = GetComponent<ThirdPersonController>(); 
         starterAssetsInputs = GetComponent<StarterAssetsInputs>();
         animator = GetComponent<Animator>();
+        animator2 = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -43,7 +45,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             
         }
 
-        if (starterAssetsInputs.Aim)
+        if (starterAssetsInputs.Aim )
         {
             aimVirtualCamera.gameObject.SetActive(true);
             thirdPersonController.Setsensetivity(aimSensetivity);
@@ -65,18 +67,22 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             thirdPersonController.Setsensetivity(normalSensetivity);
             thirdPersonController.SetRotateonMove(true);
             gunpos.transform.position = gunposition2.transform.position;
-            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f)); // change in here
+           animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f)); // change in here
             
         }
         if (starterAssetsInputs.shoot)
         {
-            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
+            animator2.SetLayerWeight(2, Mathf.Lerp(animator2.GetLayerWeight(2), 1f, Time.deltaTime * 10f));
             Vector3 aimdr = (mouseWorldPosition - spawnBulletProjectile.position).normalized;
             Instantiate(bfBulletProjectile, spawnBulletProjectile.position, Quaternion.LookRotation(aimdr,Vector3.up));
-            starterAssetsInputs.shoot = false;    // if keep false to get cs effect and
+            starterAssetsInputs.shoot = true;    // if keep false to get cs effect and
+
             
         }
-       
+        else
+        {
+            animator2.SetLayerWeight(2, Mathf.Lerp(animator2.GetLayerWeight(2), 0f, Time.deltaTime * 10f));
+        }
     }
 
 }
