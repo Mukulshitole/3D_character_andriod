@@ -51,7 +51,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             thirdPersonController.Setsensetivity(aimSensetivity);
             thirdPersonController.SetRotateonMove(false);
             animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1),1f, Time.deltaTime*10f));
-            
+            gunpos.gameObject.SetActive(true);
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
@@ -68,6 +68,7 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             thirdPersonController.SetRotateonMove(true);
             gunpos.transform.position = gunposition2.transform.position;
            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f)); // change in here
+            gunpos.gameObject.SetActive(false);
             
         }
         if (starterAssetsInputs.shoot)
@@ -76,8 +77,8 @@ public class ThirdPersonControllerShooter : MonoBehaviour
             Vector3 aimdr = (mouseWorldPosition - spawnBulletProjectile.position).normalized;
             Instantiate(bfBulletProjectile, spawnBulletProjectile.position, Quaternion.LookRotation(aimdr,Vector3.up));
             starterAssetsInputs.shoot = true;    // if keep false to get cs effect and
+            gunpos.gameObject.SetActive(true);
 
-            
         }
         else
         {
